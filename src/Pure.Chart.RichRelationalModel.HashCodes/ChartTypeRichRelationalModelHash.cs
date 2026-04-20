@@ -35,34 +35,16 @@ public sealed record ChartTypeRichRelationalModelHash : IDeterminedHash
     private readonly IDeterminedHash _nameHash;
 
     public ChartTypeRichRelationalModelHash(IChartTypeRichRelationalModel model)
-        : this(
-            model.Id,
-            (model as IChartTypeRelationalModel).Name)
-    { }
+        : this(model.Id, (model as IChartTypeRelationalModel).Name) { }
 
-    public ChartTypeRichRelationalModelHash(
-        IGuid id,
-        IString name)
-        : this(
-            new DeterminedHash(id),
-            name)
-    { }
+    public ChartTypeRichRelationalModelHash(IGuid id, IString name)
+        : this(new DeterminedHash(id), name) { }
 
-    public ChartTypeRichRelationalModelHash(
-        IDeterminedHash idHash,
-        IString name)
-        : this(
-            idHash,
-            new DeterminedHash(name))
-    { }
+    public ChartTypeRichRelationalModelHash(IDeterminedHash idHash, IString name)
+        : this(idHash, new DeterminedHash(name)) { }
 
-    public ChartTypeRichRelationalModelHash(
-        IGuid id,
-        IDeterminedHash nameHash)
-        : this(
-            new DeterminedHash(id),
-            nameHash)
-    { }
+    public ChartTypeRichRelationalModelHash(IGuid id, IDeterminedHash nameHash)
+        : this(new DeterminedHash(id), nameHash) { }
 
     public ChartTypeRichRelationalModelHash(
         IDeterminedHash idHash,

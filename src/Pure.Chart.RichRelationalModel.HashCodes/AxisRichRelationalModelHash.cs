@@ -37,81 +37,52 @@ public sealed record AxisRichRelationalModelHash : IDeterminedHash
     private readonly IDeterminedHash _legendHash;
 
     public AxisRichRelationalModelHash(IAxisRichRelationalModel model)
-        : this(
-            model.Id,
-            model.ChartId,
-            (model as IAxisRelationalModel).Legend)
-    { }
+        : this(model.Id, model.ChartId, (model as IAxisRelationalModel).Legend) { }
 
-    public AxisRichRelationalModelHash(
-        IGuid id,
-        IGuid chartId,
-        IString legend)
-        : this(
-            new DeterminedHash(id),
-            chartId,
-            legend)
-    { }
+    public AxisRichRelationalModelHash(IGuid id, IGuid chartId, IString legend)
+        : this(new DeterminedHash(id), chartId, legend) { }
 
     public AxisRichRelationalModelHash(
         IDeterminedHash idHash,
         IGuid chartId,
-        IString legend)
-        : this(
-            idHash,
-            new DeterminedHash(chartId),
-            legend)
-    { }
+        IString legend
+    )
+        : this(idHash, new DeterminedHash(chartId), legend) { }
 
     public AxisRichRelationalModelHash(
         IGuid id,
         IDeterminedHash chartIdHash,
-        IString legend)
-        : this(
-            new DeterminedHash(id),
-            chartIdHash,
-            legend)
-    { }
+        IString legend
+    )
+        : this(new DeterminedHash(id), chartIdHash, legend) { }
 
     public AxisRichRelationalModelHash(
         IGuid id,
         IGuid chartId,
-        IDeterminedHash legendHash)
-        : this(
-            new DeterminedHash(id),
-            chartId,
-            legendHash)
-    { }
+        IDeterminedHash legendHash
+    )
+        : this(new DeterminedHash(id), chartId, legendHash) { }
 
     public AxisRichRelationalModelHash(
         IDeterminedHash idHash,
         IDeterminedHash chartIdHash,
-        IString legend)
-        : this(
-            idHash,
-            chartIdHash,
-            new DeterminedHash(legend))
-    { }
+        IString legend
+    )
+        : this(idHash, chartIdHash, new DeterminedHash(legend)) { }
 
     public AxisRichRelationalModelHash(
         IDeterminedHash idHash,
         IGuid chartId,
-        IDeterminedHash legendHash)
-        : this(
-            idHash,
-            new DeterminedHash(chartId),
-            legendHash)
-    { }
+        IDeterminedHash legendHash
+    )
+        : this(idHash, new DeterminedHash(chartId), legendHash) { }
 
     public AxisRichRelationalModelHash(
         IGuid id,
         IDeterminedHash chartIdHash,
-        IDeterminedHash legendHash)
-        : this(
-            new DeterminedHash(id),
-            chartIdHash,
-            legendHash)
-    { }
+        IDeterminedHash legendHash
+    )
+        : this(new DeterminedHash(id), chartIdHash, legendHash) { }
 
     public AxisRichRelationalModelHash(
         IDeterminedHash idHash,

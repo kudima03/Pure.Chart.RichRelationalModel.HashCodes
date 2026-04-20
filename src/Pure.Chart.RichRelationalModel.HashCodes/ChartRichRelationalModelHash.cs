@@ -63,7 +63,8 @@ public sealed record ChartRichRelationalModelHash : IDeterminedHash
             model.XAxis,
             model.YAxisId,
             model.YAxis,
-            model.Series)
+            model.Series
+        )
     { }
 
     public ChartRichRelationalModelHash(
@@ -76,7 +77,8 @@ public sealed record ChartRichRelationalModelHash : IDeterminedHash
         IAxis xAxis,
         IGuid yAxisId,
         IAxis yAxis,
-        IEnumerable<ISeries> series)
+        IEnumerable<IChartSeries> series
+    )
         : this(
             new DeterminedHash(id),
             new DeterminedHash(title),
@@ -87,7 +89,8 @@ public sealed record ChartRichRelationalModelHash : IDeterminedHash
             new AxisHash(xAxis),
             new DeterminedHash(yAxisId),
             new AxisHash(yAxis),
-            new DeterminedHash(series.Select(x => new SeriesHash(x))))
+            new DeterminedHash(series.Select(x => new ChartSeriesHash(x)))
+        )
     { }
 
     public ChartRichRelationalModelHash(
