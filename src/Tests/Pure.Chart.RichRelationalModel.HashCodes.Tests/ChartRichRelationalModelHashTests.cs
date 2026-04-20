@@ -46,7 +46,7 @@ public sealed record ChartRichRelationalModelHashTests
             new Guid(),
             new AxisRichRelationalModel(new Guid(), new Guid(), new RandomString()),
             [
-                new SeriesRichRelationalModel(
+                new ChartSeriesRichRelationalModel(
                     new Guid(),
                     new Guid(),
                     new RandomString(),
@@ -85,9 +85,9 @@ public sealed record ChartRichRelationalModelHashTests
             new Guid(),
             new RandomString()
         );
-        IEnumerable<ISeries> series =
+        IEnumerable<IChartSeries> series =
         [
-            new SeriesRichRelationalModel(
+            new ChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
                 new RandomString(),
@@ -149,9 +149,9 @@ public sealed record ChartRichRelationalModelHashTests
             new Guid(),
             new RandomString()
         );
-        IEnumerable<ISeries> series =
+        IEnumerable<IChartSeries> series =
         [
-            new SeriesRichRelationalModel(
+            new ChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
                 new RandomString(),
@@ -184,7 +184,7 @@ public sealed record ChartRichRelationalModelHashTests
             new AxisHash(xAxis),
             new DeterminedHash(yAxisId),
             new AxisHash(yAxis),
-            new DeterminedHash(series.Select(x => new SeriesHash(x)))
+            new DeterminedHash(series.Select(x => new ChartSeriesHash(x)))
         );
 
         Assert.True(expected.SequenceEqual(actual));
@@ -213,9 +213,9 @@ public sealed record ChartRichRelationalModelHashTests
             new Guid(),
             new RandomString()
         );
-        IEnumerable<ISeries> series =
+        IEnumerable<IChartSeries> series =
         [
-            new SeriesRichRelationalModel(
+            new ChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
                 new RandomString(),
@@ -234,7 +234,7 @@ public sealed record ChartRichRelationalModelHashTests
             new AxisHash(xAxis),
             new DeterminedHash(yAxisId),
             new AxisHash(yAxis),
-            new DeterminedHash(series.Select(x => new SeriesHash(x)))
+            new DeterminedHash(series.Select(x => new ChartSeriesHash(x)))
         );
 
         IEnumerator<byte> expectedHash = new DeterminedHash(
@@ -248,7 +248,7 @@ public sealed record ChartRichRelationalModelHashTests
                 .Concat(new AxisHash(xAxis))
                 .Concat(new DeterminedHash(yAxisId))
                 .Concat(new AxisHash(yAxis))
-                .Concat(new DeterminedHash(series.Select(x => new SeriesHash(x))))
+                .Concat(new DeterminedHash(series.Select(x => new ChartSeriesHash(x))))
         ).GetEnumerator();
 
         bool equal = true;
@@ -289,9 +289,9 @@ public sealed record ChartRichRelationalModelHashTests
             new Guid(),
             new RandomString()
         );
-        IEnumerable<ISeries> series =
+        IEnumerable<IChartSeries> series =
         [
-            new SeriesRichRelationalModel(
+            new ChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
                 new RandomString(),
@@ -311,7 +311,7 @@ public sealed record ChartRichRelationalModelHashTests
                 .Concat(new AxisHash(xAxis))
                 .Concat(new DeterminedHash(yAxisId))
                 .Concat(new AxisHash(yAxis))
-                .Concat(new DeterminedHash(series.Select(x => new SeriesHash(x))))
+                .Concat(new DeterminedHash(series.Select(x => new ChartSeriesHash(x))))
         );
 
         Assert.Equal(
@@ -326,7 +326,7 @@ public sealed record ChartRichRelationalModelHashTests
                 new AxisHash(xAxis),
                 new DeterminedHash(yAxisId),
                 new AxisHash(yAxis),
-                new DeterminedHash(series.Select(x => new SeriesHash(x)))
+                new DeterminedHash(series.Select(x => new ChartSeriesHash(x)))
             )
         );
     }

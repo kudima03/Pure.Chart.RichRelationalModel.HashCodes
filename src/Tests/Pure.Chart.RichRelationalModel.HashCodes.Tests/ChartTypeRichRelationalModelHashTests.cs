@@ -36,13 +36,14 @@ public sealed record ChartTypeRichRelationalModelHashTests
         IGuid id = new Guid();
         IString name = new RandomString();
 
-        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(
-            id,
-            name
-        );
+        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(id, name);
 
-        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(model);
-        ChartTypeRichRelationalModelHash actual = new ChartTypeRichRelationalModelHash(model);
+        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(
+            model
+        );
+        ChartTypeRichRelationalModelHash actual = new ChartTypeRichRelationalModelHash(
+            model
+        );
 
         Assert.True(expected.SequenceEqual(actual));
     }
@@ -53,14 +54,15 @@ public sealed record ChartTypeRichRelationalModelHashTests
         IGuid id = new Guid();
         IString name = new RandomString();
 
-        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(
-            id,
-            name);
+        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(id, name);
 
-        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(model);
+        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(
+            model
+        );
         ChartTypeRichRelationalModelHash actual = new ChartTypeRichRelationalModelHash(
             id,
-            name);
+            name
+        );
 
         Assert.True(expected.SequenceEqual(actual));
     }
@@ -71,14 +73,15 @@ public sealed record ChartTypeRichRelationalModelHashTests
         IGuid id = new Guid();
         IString name = new RandomString();
 
-        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(
-            id,
-            name);
+        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(id, name);
 
-        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(model);
+        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(
+            model
+        );
         ChartTypeRichRelationalModelHash actual = new ChartTypeRichRelationalModelHash(
             new DeterminedHash(id),
-            name);
+            name
+        );
 
         Assert.True(expected.SequenceEqual(actual));
     }
@@ -89,14 +92,17 @@ public sealed record ChartTypeRichRelationalModelHashTests
         IGuid id = new Guid();
         IString name = new RandomString();
 
-        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(
-            id,
-            name);
+        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(id, name);
 
-        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(model);
+        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(
+            model
+        );
         ChartTypeRichRelationalModelHash actual = new ChartTypeRichRelationalModelHash(
             id,
-            new DeterminedHash((model as RelationalModel.Abstractions.IChartTypeRelationalModel).Name));
+            new DeterminedHash(
+                (model as RelationalModel.Abstractions.IChartTypeRelationalModel).Name
+            )
+        );
 
         Assert.True(expected.SequenceEqual(actual));
     }
@@ -107,14 +113,17 @@ public sealed record ChartTypeRichRelationalModelHashTests
         IGuid id = new Guid();
         IString name = new RandomString();
 
-        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(
-            id,
-            name);
+        IChartTypeRichRelationalModel model = new ChartTypeRichRelationalModel(id, name);
 
-        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(model);
+        ChartTypeRichRelationalModelHash expected = new ChartTypeRichRelationalModelHash(
+            model
+        );
         ChartTypeRichRelationalModelHash actual = new ChartTypeRichRelationalModelHash(
             new DeterminedHash(id),
-            new DeterminedHash((model as RelationalModel.Abstractions.IChartTypeRelationalModel).Name));
+            new DeterminedHash(
+                (model as RelationalModel.Abstractions.IChartTypeRelationalModel).Name
+            )
+        );
 
         Assert.True(expected.SequenceEqual(actual));
     }
