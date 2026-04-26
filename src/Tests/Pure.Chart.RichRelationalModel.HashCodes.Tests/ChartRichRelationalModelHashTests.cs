@@ -42,9 +42,9 @@ public sealed record ChartRichRelationalModelHashTests
             new Guid(),
             new ChartTypeRichRelationalModel(new Guid(), new RandomString()),
             new Guid(),
-            new AxisRichRelationalModel(new Guid(), new Guid(), new RandomString()),
+            new AxisRichRelationalModel(new Guid(), new RandomString()),
             new Guid(),
-            new AxisRichRelationalModel(new Guid(), new Guid(), new RandomString()),
+            new AxisRichRelationalModel(new Guid(), new RandomString()),
             [
                 new ChartSeriesRichRelationalModel(
                     new Guid(),
@@ -74,17 +74,9 @@ public sealed record ChartRichRelationalModelHashTests
             new RandomString()
         );
         IGuid xAxisId = new Guid();
-        IAxis xAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis xAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IGuid yAxisId = new Guid();
-        IAxis yAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
             new ChartSeriesRichRelationalModel(
@@ -138,17 +130,9 @@ public sealed record ChartRichRelationalModelHashTests
             new RandomString()
         );
         IGuid xAxisId = new Guid();
-        IAxis xAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis xAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IGuid yAxisId = new Guid();
-        IAxis yAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
             new ChartSeriesRichRelationalModel(
@@ -202,17 +186,9 @@ public sealed record ChartRichRelationalModelHashTests
             new RandomString()
         );
         IGuid xAxisId = new Guid();
-        IAxis xAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis xAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IGuid yAxisId = new Guid();
-        IAxis yAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
             new ChartSeriesRichRelationalModel(
@@ -278,17 +254,9 @@ public sealed record ChartRichRelationalModelHashTests
             new RandomString()
         );
         IGuid xAxisId = new Guid();
-        IAxis xAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis xAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IGuid yAxisId = new Guid();
-        IAxis yAxis = new AxisRichRelationalModel(
-            new Guid(),
-            new Guid(),
-            new RandomString()
-        );
+        IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
             new ChartSeriesRichRelationalModel(
