@@ -186,7 +186,6 @@ public sealed record AxisRichRelationalModelHashTests
     public void EnumeratesAsUntyped()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
         AxisRichRelationalModelHash hash = new AxisRichRelationalModelHash(
@@ -198,7 +197,6 @@ public sealed record AxisRichRelationalModelHashTests
         IEnumerator<byte> expectedHash = new DeterminedHash(
             _typePrefix
                 .Concat(new DeterminedHash(id))
-                .Concat(new DeterminedHash(chartId))
                 .Concat(new DeterminedHash(legend))
         ).GetEnumerator();
 
@@ -221,7 +219,6 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProducesCorrectHash()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
         AxisRichRelationalModelHash hash = new AxisRichRelationalModelHash(
@@ -232,7 +229,6 @@ public sealed record AxisRichRelationalModelHashTests
         IEnumerable<byte> expectedHash = new DeterminedHash(
             _typePrefix
                 .Concat(new DeterminedHash(id))
-                .Concat(new DeterminedHash(chartId))
                 .Concat(new DeterminedHash(legend))
         );
 
