@@ -32,73 +32,30 @@ public sealed record AxisRichRelationalModelHash : IDeterminedHash
 
     private readonly IDeterminedHash _idHash;
 
-    private readonly IDeterminedHash _chartIdHash;
-
     private readonly IDeterminedHash _legendHash;
 
     public AxisRichRelationalModelHash(IAxisRichRelationalModel model)
-        : this(model.Id, model.ChartId, (model as IAxisRelationalModel).Legend) { }
+        : this(model.Id, (model as IAxisRelationalModel).Legend) { }
 
-    public AxisRichRelationalModelHash(IGuid id, IGuid chartId, IString legend)
-        : this(new DeterminedHash(id), chartId, legend) { }
+    public AxisRichRelationalModelHash(IGuid id, IString legend)
+        : this(new DeterminedHash(id), legend) { }
 
-    public AxisRichRelationalModelHash(
-        IDeterminedHash idHash,
-        IGuid chartId,
-        IString legend
-    )
-        : this(idHash, new DeterminedHash(chartId), legend) { }
+    public AxisRichRelationalModelHash(IDeterminedHash idHash, IString legend)
+        : this(idHash, new DeterminedHash(legend)) { }
 
-    public AxisRichRelationalModelHash(
-        IGuid id,
-        IDeterminedHash chartIdHash,
-        IString legend
-    )
-        : this(new DeterminedHash(id), chartIdHash, legend) { }
+    public AxisRichRelationalModelHash(IGuid id, IDeterminedHash legendHash)
+        : this(new DeterminedHash(id), legendHash) { }
 
-    public AxisRichRelationalModelHash(
-        IGuid id,
-        IGuid chartId,
-        IDeterminedHash legendHash
-    )
-        : this(new DeterminedHash(id), chartId, legendHash) { }
-
-    public AxisRichRelationalModelHash(
-        IDeterminedHash idHash,
-        IDeterminedHash chartIdHash,
-        IString legend
-    )
-        : this(idHash, chartIdHash, new DeterminedHash(legend)) { }
-
-    public AxisRichRelationalModelHash(
-        IDeterminedHash idHash,
-        IGuid chartId,
-        IDeterminedHash legendHash
-    )
-        : this(idHash, new DeterminedHash(chartId), legendHash) { }
-
-    public AxisRichRelationalModelHash(
-        IGuid id,
-        IDeterminedHash chartIdHash,
-        IDeterminedHash legendHash
-    )
-        : this(new DeterminedHash(id), chartIdHash, legendHash) { }
-
-    public AxisRichRelationalModelHash(
-        IDeterminedHash idHash,
-        IDeterminedHash chartIdHash,
-        IDeterminedHash legendHash
-    )
+    public AxisRichRelationalModelHash(IDeterminedHash idHash, IDeterminedHash legendHash)
     {
         _idHash = idHash;
-        _chartIdHash = chartIdHash;
         _legendHash = legendHash;
     }
 
     public IEnumerator<byte> GetEnumerator()
     {
         return new DeterminedHash(
-            TypePrefix.Concat(_idHash).Concat(_chartIdHash).Concat(_legendHash)
+            TypePrefix.Concat(_idHash).Concat(_legendHash)
         ).GetEnumerator();
     }
 

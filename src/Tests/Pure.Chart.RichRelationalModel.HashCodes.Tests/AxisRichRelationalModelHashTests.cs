@@ -34,10 +34,9 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromModel()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
         AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(model);
@@ -49,17 +48,12 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromValues()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
-        AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
-            id,
-            chartId,
-            legend
-        );
+        AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(id, legend);
 
         Assert.True(expected.SequenceEqual(actual));
     }
@@ -68,15 +62,13 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromIdHash()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
         AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
             new DeterminedHash(id),
-            chartId,
             legend
         );
 
@@ -87,17 +79,12 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromChartIdHash()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
-        AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
-            id,
-            new DeterminedHash(chartId),
-            legend
-        );
+        AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(id, legend);
 
         Assert.True(expected.SequenceEqual(actual));
     }
@@ -106,15 +93,13 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromLegendHash()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
         AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
             id,
-            chartId,
             new DeterminedHash(
                 (model as RelationalModel.Abstractions.IAxisRelationalModel).Legend
             )
@@ -127,15 +112,13 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromIdHashChartIdHash()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
         AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
             new DeterminedHash(id),
-            new DeterminedHash(chartId),
             legend
         );
 
@@ -146,15 +129,13 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromIdHashLegendHash()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
         AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
             new DeterminedHash(id),
-            chartId,
             new DeterminedHash(
                 (model as RelationalModel.Abstractions.IAxisRelationalModel).Legend
             )
@@ -167,15 +148,13 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromChartIdHashLegendHash()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
         AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
             id,
-            new DeterminedHash(chartId),
             new DeterminedHash(
                 (model as RelationalModel.Abstractions.IAxisRelationalModel).Legend
             )
@@ -188,15 +167,13 @@ public sealed record AxisRichRelationalModelHashTests
     public void ProduceCorrectHashFromHashes()
     {
         IGuid id = new Guid();
-        IGuid chartId = new Guid();
         IString legend = new RandomString();
 
-        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, chartId, legend);
+        IAxisRichRelationalModel model = new AxisRichRelationalModel(id, legend);
 
         AxisRichRelationalModelHash expected = new AxisRichRelationalModelHash(model);
         AxisRichRelationalModelHash actual = new AxisRichRelationalModelHash(
             new DeterminedHash(id),
-            new DeterminedHash(chartId),
             new DeterminedHash(
                 (model as RelationalModel.Abstractions.IAxisRelationalModel).Legend
             )
@@ -214,7 +191,6 @@ public sealed record AxisRichRelationalModelHashTests
 
         AxisRichRelationalModelHash hash = new AxisRichRelationalModelHash(
             new DeterminedHash(id),
-            new DeterminedHash(chartId),
             new DeterminedHash(legend)
         );
 
@@ -250,7 +226,6 @@ public sealed record AxisRichRelationalModelHashTests
 
         AxisRichRelationalModelHash hash = new AxisRichRelationalModelHash(
             new DeterminedHash(id),
-            new DeterminedHash(chartId),
             new DeterminedHash(legend)
         );
 
