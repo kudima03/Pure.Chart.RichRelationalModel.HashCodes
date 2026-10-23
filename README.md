@@ -17,7 +17,7 @@ Deterministic hash code implementations for chart rich relational model entities
 |---|---|---|
 | `ChartRichRelationalModelHash` | `IChartRichRelationalModel` | Id, Title, Description, TypeId, Type, XAxisId, XAxis, YAxisId, YAxis, Series |
 | `ChartTypeRichRelationalModelHash` | `IChartTypeRichRelationalModel` | Id, Name |
-| `ChartSeriesRichRelationalModelHash` | `IChartSeriesRichRelationalModel` | Id, ChartId, Legend, XAxisSource, YAxisSource |
+| `ChartSeriesRichRelationalModelHash` | `IChartSeriesRichRelationalModel` | Id, ChartId, Legend, XAxisSource, YAxisSource, LineType |
 | `AxisRichRelationalModelHash` | `IAxisRichRelationalModel` | Id, Legend |
 
 All types are `sealed record` and implement `IDeterminedHash` (which extends `IEnumerable<byte>`).
