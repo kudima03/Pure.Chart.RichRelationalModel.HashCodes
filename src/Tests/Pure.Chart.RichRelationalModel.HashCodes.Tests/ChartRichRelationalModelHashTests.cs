@@ -2,11 +2,13 @@ using System.Collections;
 using Pure.Chart.Model.Abstractions;
 using Pure.Chart.Model.HashCodes;
 using Pure.Chart.RichRelationalModel.Abstractions;
+using Pure.Chart.RichRelationalModel.HashCodes.Tests.Doubles;
 using Pure.HashCodes;
 using Pure.Primitives.Abstractions.Guid;
 using Pure.Primitives.Abstractions.String;
 using Pure.Primitives.Random.String;
 using Guid = Pure.Primitives.Guid.Guid;
+using String = Pure.Primitives.String.String;
 
 namespace Pure.Chart.RichRelationalModel.HashCodes.Tests;
 
@@ -46,9 +48,10 @@ public sealed record ChartRichRelationalModelHashTests
             new Guid(),
             new AxisRichRelationalModel(new Guid(), new RandomString()),
             [
-                new ChartSeriesRichRelationalModel(
+                new FakeChartSeriesRichRelationalModel(
                     new Guid(),
                     new Guid(),
+                    new RandomString(),
                     new RandomString(),
                     new RandomString(),
                     new RandomString()
@@ -79,9 +82,10 @@ public sealed record ChartRichRelationalModelHashTests
         IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
-            new ChartSeriesRichRelationalModel(
+            new FakeChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
+                new RandomString(),
                 new RandomString(),
                 new RandomString(),
                 new RandomString()
@@ -135,9 +139,10 @@ public sealed record ChartRichRelationalModelHashTests
         IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
-            new ChartSeriesRichRelationalModel(
+            new FakeChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
+                new RandomString(),
                 new RandomString(),
                 new RandomString(),
                 new RandomString()
@@ -191,9 +196,10 @@ public sealed record ChartRichRelationalModelHashTests
         IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
-            new ChartSeriesRichRelationalModel(
+            new FakeChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
+                new RandomString(),
                 new RandomString(),
                 new RandomString(),
                 new RandomString()
@@ -259,9 +265,10 @@ public sealed record ChartRichRelationalModelHashTests
         IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
         IEnumerable<IChartSeries> series =
         [
-            new ChartSeriesRichRelationalModel(
+            new FakeChartSeriesRichRelationalModel(
                 new Guid(),
                 new Guid(),
+                new RandomString(),
                 new RandomString(),
                 new RandomString(),
                 new RandomString()
@@ -295,6 +302,77 @@ public sealed record ChartRichRelationalModelHashTests
                 new DeterminedHash(yAxisId),
                 new AxisHash(yAxis),
                 new DeterminedHash(series.Select(x => new ChartSeriesHash(x)))
+            )
+        );
+    }
+
+    [Fact]
+    public void ProduceDifferentHashesForDifferentSeriesLineTypes()
+    {
+        IGuid id = new Guid();
+        IString title = new RandomString();
+        IString description = new RandomString();
+        IGuid typeId = new Guid();
+        IChartType type = new ChartTypeRichRelationalModel(
+            new Guid(),
+            new RandomString()
+        );
+        IGuid xAxisId = new Guid();
+        IAxis xAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
+        IGuid yAxisId = new Guid();
+        IAxis yAxis = new AxisRichRelationalModel(new Guid(), new RandomString());
+        IGuid seriesId = new Guid();
+        IString legend = new RandomString();
+        IString xAxisSource = new RandomString();
+        IString yAxisSource = new RandomString();
+
+        IChartRichRelationalModel solid = new ChartRichRelationalModel(
+            id,
+            title,
+            description,
+            typeId,
+            type,
+            xAxisId,
+            xAxis,
+            yAxisId,
+            yAxis,
+            [
+                new FakeChartSeriesRichRelationalModel(
+                    seriesId,
+                    id,
+                    legend,
+                    xAxisSource,
+                    yAxisSource,
+                    new String("solid")
+                ),
+            ]
+        );
+
+        IChartRichRelationalModel dashed = new ChartRichRelationalModel(
+            id,
+            title,
+            description,
+            typeId,
+            type,
+            xAxisId,
+            xAxis,
+            yAxisId,
+            yAxis,
+            [
+                new FakeChartSeriesRichRelationalModel(
+                    seriesId,
+                    id,
+                    legend,
+                    xAxisSource,
+                    yAxisSource,
+                    new String("dashed")
+                ),
+            ]
+        );
+
+        Assert.False(
+            new ChartRichRelationalModelHash(solid).SequenceEqual(
+                new ChartRichRelationalModelHash(dashed)
             )
         );
     }
