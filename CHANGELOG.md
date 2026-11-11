@@ -6,6 +6,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.1.0-preview.3.1.0] — 2026-11-11
+
+### Added
+
+- Added `net11.0` target framework support; all existing target frameworks are
+  kept.
+
+### Changed
+
+- Updated to `Pure.Chart.RichRelationalModel.Abstractions`
+  0.1.0-preview.5.1.0, `Pure.Chart.Model.HashCodes` 0.1.0-preview.2.1.0 and
+  `Pure.HashCodes` 2.2.0.
+
 ## [0.1.0-preview.3.0.0] — 2026-10-23
 
 ### Changed
